@@ -1,3 +1,15 @@
+/*
+	+-------------------------------------------------------------+
+	|         OneLoneCoder Resource Pack Utility v1.00            |
+	|  "When it's not good enough, make it better!!!" - Moros1138 |
+	+-------------------------------------------------------------+
+
+	What is this?
+	~~~~~~~~~~~~~
+	olcPack is a command-line utility for adding, and managing
+	files into the virtual filesystem used by the olcPixelGameEngine
+*/
+
 #include "olcResourcePack.h"
 
 void Add(olc::ResourcePack *pack, const std::string &sFilename)
