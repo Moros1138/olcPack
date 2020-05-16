@@ -10,7 +10,7 @@ with the [olcPixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine
 
 # Usage Examples
 
-```sh
+```
 $ olcPack 
 Usage:	olcPack [PACK FILE] [PACK KEY] COMMAND [file/s]
 
