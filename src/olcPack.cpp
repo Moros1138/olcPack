@@ -11,6 +11,39 @@ void Add(olc::ResourcePack *pack, const std::string &sFilename)
 	std::cout << "ERROR: " << sFilename << " not added. File not found." << std::endl;
 }
 
+void License()
+{
+	std::cout << "	License (OLC-3)" << std::endl;
+	std::cout << "	~~~~~~~~~~~~~~~" << std::endl  << std::endl;
+
+	std::cout << "	Copyright 2018 - 2020 OneLoneCoder.com" << std::endl << std::endl;
+
+	std::cout << "	Redistribution and use in source and binary forms, with or without modification," << std::endl;
+	std::cout << "	are permitted provided that the following conditions are met:" << std::endl << std::endl;
+
+	std::cout << "	1. Redistributions or derivations of source code must retain the above copyright" << std::endl;
+	std::cout << "	notice, this list of conditions and the following disclaimer." << std::endl << std::endl;
+
+	std::cout << "	2. Redistributions or derivative works in binary form must reproduce the above" << std::endl;
+	std::cout << "	copyright notice. This list of conditions and the following	disclaimer must be" << std::endl;
+	std::cout << "	reproduced in the documentation and/or other materials provided with the distribution." << std::endl << std::endl;
+
+	std::cout << "	3. Neither the name of the copyright holder nor the names of its contributors may" << std::endl;
+	std::cout << "	be used to endorse or promote products derived from this software without specific" << std::endl;
+	std::cout << "	prior written permission." << std::endl << std::endl;
+
+	std::cout << "	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS	\"AS IS\" AND ANY" << std::endl;
+	std::cout << "	EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES" << std::endl;
+	std::cout << "	OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT" << std::endl;
+	std::cout << "	SHALL THE COPYRIGHT	HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT," << std::endl;
+	std::cout << "	INCIDENTAL,	SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED" << std::endl;
+	std::cout << "	TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR" << std::endl;
+	std::cout << "	BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN" << std::endl;
+	std::cout << "	CONTRACT, STRICT LIABILITY, OR TORT	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN" << std::endl;
+	std::cout << "	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF" << std::endl;
+	std::cout << "	SUCH DAMAGE." << std::endl << std::endl;
+}
+
 void List(olc::ResourcePack *pack)
 {
 	std::list<std::string> listFiles = pack->ListFiles();
@@ -88,6 +121,7 @@ void usage(const std::string &message = "")
 	std::cout << "  add         Add files to the pack" << std::endl;
 	std::cout << "  help        Show this menu" << std::endl;
 	std::cout << "  list        List files in the pack" << std::endl;
+	std::cout << "  license     Show the OneLoneCoder license" << std::endl;
 	std::cout << "  remove      Remove files from the pack" << std::endl;
 	std::cout << "  rename      Rename files within the pack" << std::endl;
 
@@ -136,6 +170,12 @@ int main(int argc, char *argv[])
 	if(listArgs.front().compare("help") == 0)
 	{
 		usage();
+	}
+
+	// LICENSE
+	if(listArgs.front().compare("license") == 0)
+	{
+		License();
 	}
 
 	// LIST
