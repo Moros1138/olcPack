@@ -1,6 +1,9 @@
 SDIR=src
 ODIR=obj
 
+# create required directories
+DUMMY:= $(shell mkdir -p $(ODIR) bin)
+
 OBJ = $(patsubst %, $(ODIR)/%,$(patsubst %.cpp, %.o,$(shell cd $(SDIR); find -name "*.cpp" -printf " %f")))
 
 obj/%.o: src/%.cpp
