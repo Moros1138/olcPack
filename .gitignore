@@ -1,0 +1,8 @@
+
+.vscode/
+
+assets/
+
+*.o
+
+bin/olcPack
