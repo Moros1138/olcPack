@@ -8,6 +8,51 @@ files into the virtual filesystem used by the olcPixelGameEngine.
 This is meant to be used to create Resource Pack files for use
 with the [olcPixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine) by [Javidx9](https://github.com/OneLoneCoder)
 
+# Usage Examples
+
+```sh
+$ olcPack 
+Usage:	olcPack [PACK FILE] [PACK KEY] COMMAND [file/s]
+
+An archive for olc::PixelGameEngine Resource Packs
+
+Commands
+  add         Add files to the pack
+  help        Show this menu
+  list        List files in the pack
+  license     Show the OneLoneCoder license
+  remove      Remove files from the pack
+  rename      Rename files within the pack
+```
+
+## Adding a file/s
+
+```
+$ olcPack path/to/packfile.pak "some key to use for scrambling" add file1 file2 file3
+file1 added.
+file2 added.
+file3 added.
+```
+
+## Listing the files
+```
+$ olcPack path/to/packfile.pak "some key to use for scrambling" list
+file1
+file2
+file3
+```
+
+## Removing a file/s
+```
+$ olcPack path/to/packfile.pak "some key to use for scrambling" remove file1
+file1 has been removed.
+```
+## Renaming a file
+```
+$ olcPack path/to/packfile.pak "some key to use for scrambling" rename file1 myfile1
+file1 > myfile1
+```
+
 # License (OLC-3)
 
 Copyright 2018, 2019, 2020 OneLoneCoder.com
