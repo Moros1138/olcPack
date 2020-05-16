@@ -3,7 +3,7 @@
 olcPack is a command-line utility for adding, and managing
 files into the virtual filesystem used by the olcPixelGameEngine.
 
-# OneLoneCoder
+# olc::PixelGameEngine
 
 This is meant to be used to create Resource Pack files for use
 with the [olcPixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine) by [Javidx9](https://github.com/OneLoneCoder)
