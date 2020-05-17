@@ -26,3 +26,5 @@ bin/olcPack.exe
 *.ipdb
 
 *.iobj
+
+obj/msvc/olcPack.vcxproj.FileListAbsolute.txt
