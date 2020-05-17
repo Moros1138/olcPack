@@ -12,6 +12,10 @@ obj/%.o: src/%.cpp
 bin/olcPack: $(OBJ)
 	g++ -o $@ $^ -lstdc++fs -std=c++17
 
+.PHONY: install
+install:
+	cp bin/olcPack /usr/local/bin/
+
 .PHONY: clean
 clean:
 	rm -f $(ODIR)/*.o
