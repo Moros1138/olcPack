@@ -22,18 +22,19 @@ Building olcPack on Linux requires a modern C++ compiler. The following commands
 install everything that is necessary to build olcPack any modern **Debian/Ubuntu** based
 Linux distribution.
 
+### Installing GCC/G++/etc
 ```
 sudo apt-get update
 sudo apt-get install build-essential git
 ```
 
-Getting olcPack
+### Getting olcPack
 ```
 git clone https://www.github.org/moros1138/olcPack.git
 cd olcPack
 ```
 
-Building and Installing
+## Building and Installing
 ```
 make
 sudo make install
@@ -41,17 +42,18 @@ sudo make install
 
 # Building On Windows (MinGW)
 
+### 
 This video on [YouTube](https://www.youtube.com/watch?v=jnI1gMxtrB4) will tell you how to ensure you are using a modern version of MinGW, and configure your build environment. 
 
 [![Updating MSYS2/MinGW Compiler on Windows](https://img.youtube.com/vi/jnI1gMxtrB4/0.jpg)](https://www.youtube.com/watch?v=jnI1gMxtrB4)
 
-Getting olcPack
+### Getting olcPack
 ```
 git clone https://www.github.org/moros1138/olcPack.git
 cd olcPack
 ```
 
-Building and Installing
+### Building and Installing
 ```
 mingw32-make
 ```
@@ -79,7 +81,7 @@ Commands
   rename      Rename files within the pack
 ```
 
-## Adding a file/s
+### Adding a file/s
 
 ```
 $ olcPack path/to/packfile.pak "some key to use for scrambling" add file1 file2 file3
@@ -88,7 +90,7 @@ file2 added.
 file3 added.
 ```
 
-## Listing the files
+### Listing the files
 ```
 $ olcPack path/to/packfile.pak "some key to use for scrambling" list
 file1
@@ -96,12 +98,12 @@ file2
 file3
 ```
 
-## Removing a file/s
+### Removing a file/s
 ```
 $ olcPack path/to/packfile.pak "some key to use for scrambling" remove file1
 file1 has been removed.
 ```
-## Renaming a file
+### Renaming a file
 ```
 $ olcPack path/to/packfile.pak "some key to use for scrambling" rename file1 myfile1
 file1 > myfile1
