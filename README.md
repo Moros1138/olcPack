@@ -38,9 +38,23 @@ Building and Installing
 make
 sudo make install
 ```
+
 # Building On Windows (MinGW)
 
-TODO
+This video on [YouTube](https://www.youtube.com/watch?v=jnI1gMxtrB4) will tell you how to ensure you are using a modern version of MinGW, and configure your build environment. 
+
+[![Updating MSYS2/MinGW Compiler on Windows](https://img.youtube.com/vi/jnI1gMxtrB4/0.jpg)](https://www.youtube.com/watch?v=jnI1gMxtrB4)
+
+Getting olcPack
+```
+git clone https://www.github.org/moros1138/olcPack.git
+cd olcPack
+```
+
+Building and Installing
+```
+mingw32-make
+```
 
 # Building On Windows (MSVC)
 
