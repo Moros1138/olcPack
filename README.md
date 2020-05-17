@@ -60,9 +60,7 @@ mingw32-make
 
 # Building On Windows (MSVC)
 
-If you're a Windows developer who'd be interested in contributing the instructions here;
-feel free to make a pull request!
-
+There's a Solution and Project provided. You should be able to simply open, build, and run it in the traditional Visual Studio way.
 
 # Usage Examples
 

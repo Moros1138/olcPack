@@ -8,3 +8,23 @@ assets/
 bin/olcPack
 
 bin/olcPack.exe
+
+*.log
+
+*.tlog
+
+*.obj
+
+*.pdb
+
+*.ilk
+
+*.idb
+
+.vs/olcPack/v16/
+
+*.ipdb
+
+*.iobj
+
+obj/msvc/olcPack.vcxproj.FileListAbsolute.txt
