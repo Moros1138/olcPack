@@ -8,6 +8,46 @@ files into the virtual filesystem used by the olcPixelGameEngine.
 This is meant to be used to create Resource Pack files for use
 with the [olcPixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine) by [Javidx9](https://github.com/OneLoneCoder)
 
+# Building On Linux
+
+I develop on **Ubuntu**, therefore I have instructions for the **Debian/Ubuntu** side of things.
+Sorry if it seems like I'm leaving out a whole bunch of things. I am. But I promise it's
+not that I don't want to do all of the research and install many versions of Linux and
+do all of the testing myself... Except.... well... I don't want to.
+
+If you develop for other Linux flavors and would like to contribute the instructions here;
+feel free to make a pull request!
+
+Building olcPack on Linux requires a modern C++ compiler. The following commands should
+install everything that is necessary to build olcPack any modern **Debian/Ubuntu** based
+Linux distribution.
+
+```
+sudo apt-get update
+sudo apt-get install build-essential git
+```
+
+Getting olcPack
+```
+git clone https://www.github.org/moros1138/olcPack.git
+cd olcPack
+```
+
+Building and Installing
+```
+make
+sudo make install
+```
+# Building On Windows (MinGW)
+
+TODO
+
+# Building On Windows (MSVC)
+
+If you're a Windows developer who'd be interested in contributing the instructions here;
+feel free to make a pull request!
+
+
 # Usage Examples
 
 ```
