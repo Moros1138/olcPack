@@ -1,0 +1,15 @@
+SDIR=src
+ODIR=obj/windows
+
+_OBJ = olcResourcePack.o olcPack.o
+OBJ = $(patsubst %, $(ODIR)/%,$(_OBJ))
+
+$(ODIR)/%.o: $(SDIR)/%.cpp
+	g++ -c -o $@ $<
+
+bin/olcPack.exe: $(OBJ)
+	g++ -o $@ $^ -lstdc++fs -std=c++17
+
+.PHONY: clean
+clean:
+	del obj\windows\*.o
