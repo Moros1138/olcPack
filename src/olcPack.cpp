@@ -82,7 +82,7 @@ void List(olc::ResourcePack *pack)
 
 void Remove(olc::ResourcePack *pack, const std::string &sFilename)
 {
-	if(pack->RemoveFile(sFilename))
+	if(pack->RemoveFile(sFilename) == olc::rcode::OK)
 	{
 		std::cout << sFilename << " has been removed." << std::endl;
 	}
