@@ -6,3 +6,5 @@ assets/
 *.o
 
 bin/olcPack
+
+bin/olcPack.exe
