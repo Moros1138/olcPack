@@ -56,7 +56,27 @@ void License()
 	std::cout << "	SUCH DAMAGE." << std::endl << std::endl;
 }
 
-void List(olc::ResourcePack *pack)
+// Thanks MaGetzUb
+const char* FormatSize(std::size_t size)
+{
+	static char buf[256] = {};
+
+	static const char *suffix[] = {"B", "KB", "MB", "GB", "TB"};
+
+	size_t mul = 0, index = 0;
+
+	if(size >= 0) mul = 1, index = 0;
+	if(size >= 1024) mul = 1024, index = 1;
+	if(size >= 1048576) mul = 1048576, index = 2;
+	if(size >= 1073741824) mul = 1073741824, index = 3;
+	if(size >= 1099511627776) mul = 1099511627776, index = 4;
+
+	sprintf(buf, "%ld%s", (size / mul), suffix[index]);
+
+	return buf; 
+}
+
+void List(olc::ResourcePack *pack, bool asc = true)
 {
 	std::list<std::string> listFiles = pack->ListFiles();
 
@@ -68,9 +88,25 @@ void List(olc::ResourcePack *pack)
 		}
 		else
 		{
+			std::printf("Size\t | Filename\n");
+			std::printf("------------------------------------------\n");
+			
+			listFiles.sort([pack, asc](const std::string &a, const std::string &b){
+				
+				olc::ResourceBuffer rb_a = pack->GetFileBuffer(a);
+				olc::ResourceBuffer rb_b = pack->GetFileBuffer(b);
+
+				if(asc)
+					return rb_a.vMemory.size() < rb_b.vMemory.size();
+
+				return rb_a.vMemory.size() > rb_b.vMemory.size();
+
+			});
+			
 			for(auto &f : listFiles)
 			{
-				std::cout << f << std::endl;
+				olc::ResourceBuffer rb = pack->GetFileBuffer(f);
+				std::printf("%s\t | %s\n", FormatSize(rb.vMemory.size()), f.c_str());
 			}
 		}
 	}
