@@ -11,6 +11,8 @@
 */
 
 #include "olcResourcePack.h"
+#include <algorithm>
+#include <cstdio>
 
 void Add(olc::ResourcePack *pack, const std::string &sFilename)
 {
@@ -216,27 +218,36 @@ int main(int argc, char *argv[])
 
 		bChanged = true;
 	}
-	
-	// HELP
-	if(listArgs.front().compare("help") == 0)
+	else if(listArgs.front().compare("help") == 0) // HELP
 	{
 		usage();
 	}
-
-	// LICENSE
-	if(listArgs.front().compare("license") == 0)
+	else if(listArgs.front().compare("license") == 0) // LICENSE
 	{
 		License();
 	}
-
-	// LIST
-	if(listArgs.front().compare("list") == 0)
+	else if(listArgs.front().compare("list") == 0) // // LIST
 	{
-		List(pack);
-	}
+		if(listArgs.size() >= 2)
+		{
+			listArgs.pop_front();
 
-	// REMOVE
-	if(listArgs.front().compare("remove") == 0)
+			if(listArgs.front().compare("asc") == 0)
+			{
+				List(pack);
+			}
+
+			if(listArgs.front().compare("desc") == 0)
+			{
+				List(pack, false);
+			}
+		}
+		else
+		{
+			List(pack);
+		}
+	}
+	else if(listArgs.front().compare("remove") == 0) // REMOVE
 	{
 		listArgs.pop_front();
 
@@ -248,9 +259,7 @@ int main(int argc, char *argv[])
 		
 		bChanged = true;
 	}
-
-	// RENAME
-	if(listArgs.front().compare("rename") == 0)
+	else if(listArgs.front().compare("rename") == 0) // RENAME
 	{
 		listArgs.pop_front();
 
@@ -267,7 +276,12 @@ int main(int argc, char *argv[])
 
 		bChanged = true;
 	}
-
+	else
+	{
+		usage();
+		return 1;
+	}
+	
 	// save changes
 	if(bChanged)
 		pack->SavePack(sFilename, sKey);
