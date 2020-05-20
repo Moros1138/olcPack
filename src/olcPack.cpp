@@ -73,7 +73,11 @@ const char* FormatSize(std::size_t size)
 	if(size >= 1073741824) mul = 1073741824, index = 3;
 	if(size >= 1099511627776) mul = 1099511627776, index = 4;
 
-	sprintf(buf, "%ld%s", (size / mul), suffix[index]);
+#ifdef _MSC_VER
+	sprintf_s(buf, "%ld%s", (long)(size / mul), suffix[index]);
+#else
+	std::sprintf(buf, "%ld%s", (long)(size / mul), suffix[index]);
+#endif
 
 	return buf; 
 }
