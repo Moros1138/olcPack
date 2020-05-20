@@ -7,10 +7,10 @@ DUMMY:= $(shell mkdir -p $(ODIR) bin)
 OBJ = $(patsubst %, $(ODIR)/%,$(patsubst %.cpp, %.o,$(shell cd $(SDIR); find -name "*.cpp" -printf " %f")))
 
 $(ODIR)/%.o: $(SDIR)/%.cpp
-	g++ -c -o $@ $<
+	g++ -g -c -o $@ $<
 
 bin/olcPack: $(OBJ)
-	g++ -o $@ $^ -lstdc++fs -std=c++17
+	g++ -g -o $@ $^ -lstdc++fs -std=c++17
 
 .PHONY: install
 install:
