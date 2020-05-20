@@ -164,8 +164,11 @@ int main(int argc, char *argv[])
 	olc::ResourcePack *pack = new olc::ResourcePack();
 	pack->LoadPack(sFilename, sKey);
 
-	// ADD
-	if(listArgs.front().compare("add") == 0)
+	std::printf("\nolcPack (olcPixelGameEngine Resource Pack Utility)\n\n");
+	std::printf("Managing: %s\n\n", sFilename.c_str());
+	
+	
+	if(listArgs.front().compare("add") == 0) // ADD
 	{
 		listArgs.pop_front();
 
