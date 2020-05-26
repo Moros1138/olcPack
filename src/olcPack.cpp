@@ -14,6 +14,30 @@
 #include <algorithm>
 #include <cstdio>
 
+// Thanks MaGetzUb
+const char* FormatSize(std::size_t size)
+{
+	static char buf[256] = {};
+
+	static const char *suffix[] = {"B", "KB", "MB", "GB", "TB"};
+
+	size_t mul = 0, index = 0;
+
+	if(size >= 0) mul = 1, index = 0;
+	if(size >= 1024) mul = 1024, index = 1;
+	if(size >= 1048576) mul = 1048576, index = 2;
+	if(size >= 1073741824) mul = 1073741824, index = 3;
+	if(size >= 1099511627776) mul = 1099511627776, index = 4;
+
+#ifdef _MSC_VER
+	sprintf_s(buf, "%ld%s", (long)(size / mul), suffix[index]);
+#else
+	std::sprintf(buf, "%ld%s", (long)(size / mul), suffix[index]);
+#endif
+
+	return buf; 
+}
+
 void Add(olc::ResourcePack *pack, const std::string &sFilename)
 {
 	if(pack->AddFile(sFilename))
@@ -56,30 +80,6 @@ void License()
 	std::cout << "	CONTRACT, STRICT LIABILITY, OR TORT	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN" << std::endl;
 	std::cout << "	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF" << std::endl;
 	std::cout << "	SUCH DAMAGE." << std::endl << std::endl;
-}
-
-// Thanks MaGetzUb
-const char* FormatSize(std::size_t size)
-{
-	static char buf[256] = {};
-
-	static const char *suffix[] = {"B", "KB", "MB", "GB", "TB"};
-
-	size_t mul = 0, index = 0;
-
-	if(size >= 0) mul = 1, index = 0;
-	if(size >= 1024) mul = 1024, index = 1;
-	if(size >= 1048576) mul = 1048576, index = 2;
-	if(size >= 1073741824) mul = 1073741824, index = 3;
-	if(size >= 1099511627776) mul = 1099511627776, index = 4;
-
-#ifdef _MSC_VER
-	sprintf_s(buf, "%ld%s", (long)(size / mul), suffix[index]);
-#else
-	std::sprintf(buf, "%ld%s", (long)(size / mul), suffix[index]);
-#endif
-
-	return buf; 
 }
 
 void List(olc::ResourcePack *pack, bool asc = true)
