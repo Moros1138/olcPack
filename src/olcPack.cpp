@@ -216,7 +216,7 @@ void usage(const std::string &message = "")
 	std::cout << "An archive for olc::PixelGameEngine Resource Packs" << std::endl << std::endl;
 	std::cout << "Commands" << std::endl;
 	std::cout << "  add         Add files to the pack" << std::endl;
-	std::cout << "  add         Extract files from the pack" << std::endl;
+	std::cout << "  extract     Extract files from the pack" << std::endl;
 	std::cout << "  help        Show this menu" << std::endl;
 	std::cout << "  list        List files in the pack" << std::endl;
 	std::cout << "  license     Show the OneLoneCoder license" << std::endl;

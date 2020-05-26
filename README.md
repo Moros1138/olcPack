@@ -72,6 +72,7 @@ An archive for olc::PixelGameEngine Resource Packs
 
 Commands
   add         Add files to the pack
+  extract     Extract files from the pack
   help        Show this menu
   list        List files in the pack
   license     Show the OneLoneCoder license
