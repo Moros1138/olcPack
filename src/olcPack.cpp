@@ -49,6 +49,49 @@ void Add(olc::ResourcePack *pack, const std::string &sFilename)
 	std::cout << "ERROR: " << sFilename << " not added. File not found." << std::endl;
 }
 
+void Extract(olc::ResourcePack *pack, std::string sFilename = "")
+{
+
+	if(pack->Loaded())
+	{
+		if(sFilename.empty())
+		{
+			std::list<std::string> listFiles = pack->ListFiles();
+
+			if(listFiles.empty())
+			{
+				std::cout << "No files to extract." << std::endl;
+			}
+			else
+			{
+				for(auto &f : listFiles)
+				{
+					if(pack->ExtractFile(f) == olc::rcode::OK)
+					{
+						std::cout << f << " has been extracted." << std::endl;
+					}
+					else
+					{
+						std::cout << f << " does not exist" << std::endl;
+					}
+
+				}
+			}
+		}
+		else
+		{
+			if(pack->ExtractFile(sFilename) == olc::rcode::OK)
+			{
+				std::cout << sFilename << " has been extracted." << std::endl;
+			}
+			else
+			{
+				std::cout << sFilename << " does not exist" << std::endl;
+			}
+		}
+	}
+}
+
 void License()
 {
 	std::cout << "	License (OLC-3)" << std::endl;
@@ -173,6 +216,7 @@ void usage(const std::string &message = "")
 	std::cout << "An archive for olc::PixelGameEngine Resource Packs" << std::endl << std::endl;
 	std::cout << "Commands" << std::endl;
 	std::cout << "  add         Add files to the pack" << std::endl;
+	std::cout << "  add         Extract files from the pack" << std::endl;
 	std::cout << "  help        Show this menu" << std::endl;
 	std::cout << "  list        List files in the pack" << std::endl;
 	std::cout << "  license     Show the OneLoneCoder license" << std::endl;
@@ -221,6 +265,20 @@ int main(int argc, char *argv[])
 			Add(pack, f);
 
 		bChanged = true;
+	}
+	else if(listArgs.front().compare("extract") == 0)
+	{
+		listArgs.pop_front();
+
+		if(!listArgs.empty())
+		{
+			for(auto &f : listArgs)
+				Extract(pack, f);
+		}
+		else
+		{
+			Extract(pack);
+		}
 	}
 	else if(listArgs.front().compare("help") == 0) // HELP
 	{
