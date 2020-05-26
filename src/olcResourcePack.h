@@ -2,7 +2,7 @@
 	olcResourcePack.h
 
 	+-------------------------------------------------------------+
-	|           OneLoneCoder Resource Pack v1.00                  |
+	|           OneLoneCoder Resource Pack v1.01                  |
 	|  "When it's not good enough, make it better!!!" - Moros1138 |
 	+-------------------------------------------------------------+
 
