@@ -107,6 +107,21 @@ $ olcPack path/to/packfile.pak "some key to use for scrambling" rename file1 myf
 file1 > myfile1
 ```
 
+### Extract a file
+```
+$ olcPack path/to/packfile.pak "some key to use for scrambling" extract file1
+file1 has been extracted.
+```
+
+### Extract all files
+```
+$ olcPack path/to/packfile.pak "some key to use for scrambling" extract
+file1 has been extracted.
+file2 has been extracted.
+file3 has been extracted.
+```
+
+
 # License (OLC-3)
 
 Copyright 2018, 2019, 2020 OneLoneCoder.com
