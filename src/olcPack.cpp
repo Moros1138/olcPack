@@ -14,6 +14,30 @@
 #include <algorithm>
 #include <cstdio>
 
+// Thanks MaGetzUb
+const char* FormatSize(std::size_t size)
+{
+	static char buf[256] = {};
+
+	static const char *suffix[] = {"B", "KB", "MB", "GB", "TB"};
+
+	size_t mul = 0, index = 0;
+
+	if(size >= 0) mul = 1, index = 0;
+	if(size >= 1024) mul = 1024, index = 1;
+	if(size >= 1048576) mul = 1048576, index = 2;
+	if(size >= 1073741824) mul = 1073741824, index = 3;
+	if(size >= 1099511627776) mul = 1099511627776, index = 4;
+
+#ifdef _MSC_VER
+	sprintf_s(buf, "%ld%s", (long)(size / mul), suffix[index]);
+#else
+	std::sprintf(buf, "%ld%s", (long)(size / mul), suffix[index]);
+#endif
+
+	return buf; 
+}
+
 void Add(olc::ResourcePack *pack, const std::string &sFilename)
 {
 	if(pack->AddFile(sFilename))
@@ -23,6 +47,49 @@ void Add(olc::ResourcePack *pack, const std::string &sFilename)
 	}
 
 	std::cout << "ERROR: " << sFilename << " not added. File not found." << std::endl;
+}
+
+void Extract(olc::ResourcePack *pack, std::string sFilename = "")
+{
+
+	if(pack->Loaded())
+	{
+		if(sFilename.empty())
+		{
+			std::list<std::string> listFiles = pack->ListFiles();
+
+			if(listFiles.empty())
+			{
+				std::cout << "No files to extract." << std::endl;
+			}
+			else
+			{
+				for(auto &f : listFiles)
+				{
+					if(pack->ExtractFile(f) == olc::rcode::OK)
+					{
+						std::cout << f << " has been extracted." << std::endl;
+					}
+					else
+					{
+						std::cout << f << " does not exist" << std::endl;
+					}
+
+				}
+			}
+		}
+		else
+		{
+			if(pack->ExtractFile(sFilename) == olc::rcode::OK)
+			{
+				std::cout << sFilename << " has been extracted." << std::endl;
+			}
+			else
+			{
+				std::cout << sFilename << " does not exist" << std::endl;
+			}
+		}
+	}
 }
 
 void License()
@@ -56,30 +123,6 @@ void License()
 	std::cout << "	CONTRACT, STRICT LIABILITY, OR TORT	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN" << std::endl;
 	std::cout << "	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF" << std::endl;
 	std::cout << "	SUCH DAMAGE." << std::endl << std::endl;
-}
-
-// Thanks MaGetzUb
-const char* FormatSize(std::size_t size)
-{
-	static char buf[256] = {};
-
-	static const char *suffix[] = {"B", "KB", "MB", "GB", "TB"};
-
-	size_t mul = 0, index = 0;
-
-	if(size >= 0) mul = 1, index = 0;
-	if(size >= 1024) mul = 1024, index = 1;
-	if(size >= 1048576) mul = 1048576, index = 2;
-	if(size >= 1073741824) mul = 1073741824, index = 3;
-	if(size >= 1099511627776) mul = 1099511627776, index = 4;
-
-#ifdef _MSC_VER
-	sprintf_s(buf, "%ld%s", (long)(size / mul), suffix[index]);
-#else
-	std::sprintf(buf, "%ld%s", (long)(size / mul), suffix[index]);
-#endif
-
-	return buf; 
 }
 
 void List(olc::ResourcePack *pack, bool asc = true)
@@ -173,6 +216,7 @@ void usage(const std::string &message = "")
 	std::cout << "An archive for olc::PixelGameEngine Resource Packs" << std::endl << std::endl;
 	std::cout << "Commands" << std::endl;
 	std::cout << "  add         Add files to the pack" << std::endl;
+	std::cout << "  add         Extract files from the pack" << std::endl;
 	std::cout << "  help        Show this menu" << std::endl;
 	std::cout << "  list        List files in the pack" << std::endl;
 	std::cout << "  license     Show the OneLoneCoder license" << std::endl;
@@ -221,6 +265,20 @@ int main(int argc, char *argv[])
 			Add(pack, f);
 
 		bChanged = true;
+	}
+	else if(listArgs.front().compare("extract") == 0)
+	{
+		listArgs.pop_front();
+
+		if(!listArgs.empty())
+		{
+			for(auto &f : listArgs)
+				Extract(pack, f);
+		}
+		else
+		{
+			Extract(pack);
+		}
 	}
 	else if(listArgs.front().compare("help") == 0) // HELP
 	{

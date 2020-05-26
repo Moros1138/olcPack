@@ -254,5 +254,36 @@ namespace olc {
 		return olc::rcode::NO_FILE;
 	}
 
+	olc::rcode ResourcePack::ExtractFile(const std::string &sFilename)
+	{
+		const std::string file = makeposix(sFilename);
+		std::vector<std::string> directories;
 
+		if(FileExists(file))
+		{
+			_gfs::path p = _gfs::path(file);
+			
+			if(p.has_parent_path())
+			{
+				if(!_gfs::exists(p.parent_path()))
+				{
+					_gfs::create_directories(p.parent_path());
+				}
+			}
+
+			if(_gfs::exists(p.parent_path()))
+			{
+				std::ofstream ofs(file, std::ofstream::binary);
+				if (!ofs.is_open()) return olc::rcode::FAIL;
+
+				olc::ResourceBuffer rb = GetFileBuffer(file);
+				ofs.write((char*)rb.vMemory.data(), rb.vMemory.size());
+				ofs.close();
+				
+				return olc::rcode::OK;
+			}
+		}
+		
+		return olc::rcode::NO_FILE;
+	}
 }

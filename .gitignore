@@ -28,3 +28,5 @@ bin/olcPack.exe
 *.iobj
 
 obj/msvc/olcPack.vcxproj.FileListAbsolute.txt
+
+*.pak
