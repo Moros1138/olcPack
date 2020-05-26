@@ -137,6 +137,7 @@ namespace olc {
 		std::list<std::string> ListFiles();
 		olc::rcode RemoveFile(const std::string &sFilename);
 		olc::rcode RenameFile(const std::string &src, const std::string &dest);
+		olc::rcode ExtractFile(const std::string &sFilename);
 	};
 
 }
