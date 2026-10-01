@@ -1,6 +1,6 @@
 /*
 	+-------------------------------------------------------------+
-	|         OneLoneCoder Resource Pack Utility v1.00            |
+	|         OneLoneCoder Resource Pack Utility v1.03            |
 	|  "When it's not good enough, make it better!!!" - Moros1138 |
 	+-------------------------------------------------------------+
 
