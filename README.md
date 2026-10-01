@@ -8,26 +8,6 @@ files into the virtual filesystem used by the olcPixelGameEngine.
 This is meant to be used to create Resource Pack files for use
 with the [olcPixelGameEngine](https://github.com/OneLoneCoder/olcPixelGameEngine) by [Javidx9](https://github.com/OneLoneCoder)
 
-# Building On Linux
-
-I develop on **Ubuntu**, therefore I have instructions for the **Debian/Ubuntu** side of things.
-Sorry if it seems like I'm leaving out a whole bunch of things. I am. But I promise it's
-not that I don't want to do all of the research and install many versions of Linux and
-do all of the testing myself... Except.... well... I don't want to.
-
-If you develop for other Linux flavors and would like to contribute the instructions here;
-feel free to make a pull request!
-
-Building olcPack on Linux requires a modern C++ compiler. The following commands should
-install everything that is necessary to build olcPack any modern **Debian/Ubuntu** based
-Linux distribution.
-
-### Installing GCC/G++/etc
-```
-sudo apt-get update
-sudo apt-get install build-essential git
-```
-
 ### Getting olcPack
 ```
 git clone https://www.github.org/moros1138/olcPack.git
@@ -36,31 +16,9 @@ cd olcPack
 
 ## Building and Installing
 ```
-make
-sudo make install
+cmake -S . -B build
+cmake --build build
 ```
-
-# Building On Windows (MinGW)
-
-### 
-This video on [YouTube](https://www.youtube.com/watch?v=jnI1gMxtrB4) will tell you how to ensure you are using a modern version of MinGW, and configure your build environment. 
-
-[![Updating MSYS2/MinGW Compiler on Windows](https://img.youtube.com/vi/jnI1gMxtrB4/0.jpg)](https://www.youtube.com/watch?v=jnI1gMxtrB4)
-
-### Getting olcPack
-```
-git clone https://www.github.org/moros1138/olcPack.git
-cd olcPack
-```
-
-### Building and Installing
-```
-mingw32-make
-```
-
-# Building On Windows (MSVC)
-
-There's a Solution and Project provided. You should be able to simply open, build, and run it in the traditional Visual Studio way.
 
 # Usage Examples
 
@@ -122,10 +80,9 @@ file2 has been extracted.
 file3 has been extracted.
 ```
 
-
 # License (OLC-3)
 
-Copyright 2018, 2019, 2020 OneLoneCoder.com
+Copyright 2026 Moros Smith
 
 Redistribution and use in source and binary forms, with or without 
 modification, are permitted provided that the following conditions 
